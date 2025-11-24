@@ -26,7 +26,6 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 40),
-
                 Text(
                   "Rick and Morty",
                   style: TextStyle(

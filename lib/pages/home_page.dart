@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
             child: Opacity(
               opacity: 0.8,
               child: Image.asset(
-                '../lib/assets/images/portal.png',
+                'assets/images/portal.png',
                 width: 280,
               ),
             ),

@@ -10,7 +10,6 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 11, 15, 19),
       body: Stack(
         children: [
-          // Fundo com portal verde
           Center(
             child: Opacity(
               opacity: 0.8,
@@ -21,7 +20,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
 
-          // Conteúdo sobreposto
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

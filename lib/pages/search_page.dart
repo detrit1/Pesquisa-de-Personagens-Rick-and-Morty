@@ -60,7 +60,6 @@ class _SearchPageState extends State<SearchPage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // 🔍 SearchBar estilizada
             TextField(
               onChanged: search,
               style: const TextStyle(color: Colors.white),
@@ -88,14 +87,12 @@ class _SearchPageState extends State<SearchPage> {
 
             const SizedBox(height: 20),
 
-            // 🌀 Loading verde
             if (isLoading)
               const Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: CircularProgressIndicator(color: Colors.greenAccent),
               ),
 
-            // 🧪 Sem resultados
             if (!isLoading && characters.isEmpty && query.isNotEmpty)
               const Padding(
                 padding: EdgeInsets.only(top: 20),
@@ -107,7 +104,6 @@ class _SearchPageState extends State<SearchPage> {
 
             const SizedBox(height: 10),
 
-            // 🧬 Lista estilizada
             Expanded(
               child: ListView.builder(
                 itemCount: characters.length,
@@ -146,7 +142,6 @@ class _SearchPageState extends State<SearchPage> {
 
                       child: Row(
                         children: [
-                          // Foto com moldura neon 🛸
                           Container(
                             width: 70,
                             height: 70,
@@ -165,7 +160,6 @@ class _SearchPageState extends State<SearchPage> {
 
                           const SizedBox(width: 16),
 
-                          // textos
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

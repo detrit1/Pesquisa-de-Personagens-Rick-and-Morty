@@ -39,9 +39,8 @@ class CharacterPage extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(18),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center, // 🔥 CENTRALIZADO
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Foto com neon
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
@@ -69,7 +68,6 @@ class CharacterPage extends StatelessWidget {
 
             const SizedBox(height: 25),
 
-            // Card centralizado
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(22),
@@ -91,7 +89,7 @@ class CharacterPage extends StatelessWidget {
               ),
 
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center, // 🔥 CENTRALIZADO
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   infoItem("Nome", character.name),
                   infoItem("Origem", character.origin),
@@ -108,12 +106,11 @@ class CharacterPage extends StatelessWidget {
     );
   }
 
-  /// Widget de item centralizado
   Widget infoItem(String title, String value) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center, // 🔥 CENTRALIZADO
+        crossAxisAlignment: CrossAxisAlignment.center, 
         children: [
           Text(
             title,

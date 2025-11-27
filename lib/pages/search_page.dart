@@ -15,18 +15,35 @@ class _SearchPageState extends State<SearchPage> {
   bool isLoading = false;
   String query = "";
 
-  void search(String value) async {
-    setState(() => isLoading = true);
-
-    final service = ApiService();
-    final results = await service.fetchCharacters(value);
-
-    setState(() {
-      characters = results;
-      isLoading = false;
-      query = value;
-    });
+  @override
+  void initState() {
+    super.initState();
+    search("");
   }
+
+  void search(String value) async {
+  setState(() {
+    query = value;
+
+    // Se apagou tudo → limpa a lista e não busca nada
+    if (value.isEmpty) {
+      characters = [];
+      isLoading = false;
+      return;
+    }
+
+    isLoading = true;
+  });
+
+  final service = ApiService();
+  final results = await service.fetchCharacters(value);
+
+  setState(() {
+    characters = results;
+    isLoading = false;
+  });
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -93,14 +110,32 @@ class _SearchPageState extends State<SearchPage> {
                 child: CircularProgressIndicator(color: Colors.greenAccent),
               ),
 
-            if (!isLoading && characters.isEmpty && query.isNotEmpty)
-              const Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Text(
-                  "Nenhum personagem encontrado",
-                  style: TextStyle(color: Colors.white54, fontSize: 16),
+            if (!isLoading && query.isNotEmpty && characters.isEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(
+                      Icons.search_off_rounded,
+                      color: Colors.white70,
+                      size: 70,
+                    ),
+                    SizedBox(height: 15),
+                    Text(
+                      "Nenhum personagem encontrado",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+
 
             const SizedBox(height: 10),
 

@@ -10,9 +10,18 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 11, 15, 19),
       body: Stack(
         children: [
+          Positioned.fill(
+            child: Opacity(
+              opacity: 0.85, // deixa mais suave atrás dos textos
+              child: Image.asset(
+                "assets/images/space.gif", // <-- USE SEU GIF AQUI
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           Center(
             child: Opacity(
-              opacity: 0.8,
+              opacity: 1,
               child: Image.asset(
                 'assets/images/portal.png',
                 width: 280,
@@ -49,11 +58,11 @@ class HomePage extends StatelessWidget {
                   "Character Explorer",
                   style: TextStyle(
                     fontSize: 22,
-                    color: Color(0xFF66FFAA),
+                    color: Color.fromARGB(255, 0, 0, 0),
                     shadows: [
                       Shadow(
                         blurRadius: 5,
-                        color: Colors.black87,
+                        color: Colors.blueAccent,
                       )
                     ],
                   ),

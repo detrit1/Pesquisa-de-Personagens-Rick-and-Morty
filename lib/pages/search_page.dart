@@ -17,9 +17,8 @@ class _SearchPageState extends State<SearchPage> {
   List<Character> characters = [];
   bool isLoading = false;
   String query = "";
-  String selectedGender = ""; // NOVO: Controlador do gênero selecionado
+  String selectedGender = ""; 
 
-  // NOVO: Lista de gêneros disponíveis
   final List<String> genders = [
     "",
     "Female",
@@ -34,13 +33,11 @@ class _SearchPageState extends State<SearchPage> {
     search("", "");
   }
 
-  // ATUALIZADO: Método search agora aceita gênero
   void search(String value, String gender) async {
     setState(() {
       query = value;
       selectedGender = gender;
 
-      // Se ambos estão vazios → limpa a lista
       if (value.isEmpty && gender.isEmpty) {
         characters = [];
         isLoading = false;
@@ -53,9 +50,7 @@ class _SearchPageState extends State<SearchPage> {
     final service = ApiService();
     List<Character> results = [];
 
-    // LÓGICA DE BUSCA:
     if (gender.isNotEmpty && value.isNotEmpty) {
-      // Busca por nome E gênero (a API suporta múltiplos filtros)
       final url = "https://rickandmortyapi.com/api/character/?name=$value&gender=$gender";
       try {
         final response = await http.get(Uri.parse(url));
@@ -113,7 +108,6 @@ class _SearchPageState extends State<SearchPage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // CAMPO DE BUSCA POR NOME (mantido)
             TextField(
               onChanged: (value) => search(value, selectedGender),
               style: const TextStyle(color: Colors.white),
@@ -141,7 +135,6 @@ class _SearchPageState extends State<SearchPage> {
 
             const SizedBox(height: 16),
 
-            // NOVO: FILTRO POR GÊNERO
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
               decoration: BoxDecoration(
@@ -337,7 +330,6 @@ class _SearchPageState extends State<SearchPage> {
     );
   }
 
-  // NOVO: Método para traduzir os gêneros
   String _getGenderDisplayName(String gender) {
     switch (gender) {
       case "Female": return "Feminino";

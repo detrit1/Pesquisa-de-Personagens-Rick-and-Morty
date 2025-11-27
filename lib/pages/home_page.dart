@@ -12,9 +12,9 @@ class HomePage extends StatelessWidget {
         children: [
           Positioned.fill(
             child: Opacity(
-              opacity: 0.85, // deixa mais suave atrás dos textos
+              opacity: 0.85,
               child: Image.asset(
-                "assets/images/space.gif", // <-- USE SEU GIF AQUI
+                "assets/images/space.gif",
                 fit: BoxFit.cover,
               ),
             ),

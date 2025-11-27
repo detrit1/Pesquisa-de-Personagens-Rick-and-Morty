@@ -24,4 +24,25 @@ class ApiService {
   }
 }
 
+Future<List<Character>> fetchCharactersByGender(String gender) async {
+  try {
+    final url = Uri.parse("https://rickandmortyapi.com/api/character/?gender=$gender");
+
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final jsonData = jsonDecode(response.body);
+      final results = jsonData['results'] as List;
+
+      return results.map((e) => Character.fromJson(e)).toList();
+    } else {
+      print("API retornou erro: ${response.statusCode}");
+      return [];
+    }
+  } catch (e) {
+    print("Erro ao buscar personagens por gênero: $e");
+    return [];
+  }
+}
+
 }
